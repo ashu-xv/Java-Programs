@@ -1,0 +1,21 @@
+class abc {
+    public int con(char c) {
+        return (int) c;
+    }
+}
+class def extends abc {
+    public int con(char c) {
+        return super.con(c); 
+    }    
+}
+public class Q5 {
+    public static void main(String[] args) {
+       def converter = new def();
+        
+        char ch = 'A';
+        System.out.println("ASCII value of '" + ch + "' is: " + converter.con(ch));
+        
+        ch = 'b';
+        System.out.println("ASCII value of '" + ch + "' is: " + converter.con(ch));
+    }
+}

@@ -1,0 +1,45 @@
+.data
+matrix1:    .word 1, 2, 3, 4      @ Matrix 1: [1 2]
+            .word 5, 6, 7, 8                  [5 6]
+matrix2:    .word 9, 10, 11, 12    @ Matrix 2: [9 10]
+            .word 13, 14, 15, 16               [13 14]
+result:     .space 16              @ Space for the result matrix
+
+.text
+.global main
+
+@ Function to add two matrices
+add_matrices:
+    push {r4, r5, r6, lr}      @ Save registers
+
+    ldr r4, =matrix1            @ Load matrix1 address
+    ldr r5, =matrix2            @ Load matrix2 address
+    ldr r6, =result             @ Load result matrix address
+
+    mov r3, #4                  @ Number of elements in a row
+    mov r2, #8                  @ Number of rows
+loop_rows:
+    mov r1, #0                  @ Initialize column counter
+loop_columns:
+    ldr r0, [r4], #4            @ Load element from matrix1
+    ldr r1, [r5], #4            @ Load element from matrix2
+    add r0, r0, r1              @ Add the elements
+    str r0, [r6], #4            @ Store result in the result matrix
+    subs r3, r3, #1             @ Decrement column counter
+    bne loop_columns            @ Loop if not zero
+    add r4, r4, #4              @ Move to next row in matrix1
+    add r5, r5, #4              @ Move to next row in matrix2
+    subs r2, r2, #1             @ Decrement row counter
+    bne loop_rows               @ Loop if not zero
+
+    pop {r4, r5, r6, pc}        @ Restore registers and return
+
+main:
+    bl add_matrices             @ Call add_matrices function
+
+    @ Print the result matrix (omitted for brevity)
+
+    mov r7, #1                  @ Exit syscall
+    mov r0, #0                  @ Exit status
+    svc 0                       @ Call kernel
+

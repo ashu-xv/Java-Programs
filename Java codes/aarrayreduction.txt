@@ -1,0 +1,24 @@
+public class ArrayReduction {
+
+    public static int[] reduceArray(int[] originalArray, int reductionValue) {
+        int n = originalArray.length;
+        int[] reducedArray = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            reducedArray[i] = originalArray[i] - reductionValue;
+        }
+
+        return reducedArray;
+    }
+
+    public static void main(String[] args) {
+        int[] originalArray = {10, 15, 20, 25, 30};
+        int reductionValue = 5;
+
+        int[] reducedArray = reduceArray(originalArray, reductionValue);
+
+        System.out.println("Original Array: " + Arrays.toString(originalArray));
+        System.out.println("Reduced Array (by " + reductionValue + "): " + Arrays.toString(reducedArray));
+    }
+}
+

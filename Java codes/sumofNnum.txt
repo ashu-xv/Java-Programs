@@ -1,0 +1,22 @@
+public class AnotherRecursiveSumOfArray {
+
+    public static int calculateSum(int[] array, int currentIndex) {
+        // Base case: if the currentIndex is equal to the array length, return 0
+        if (currentIndex == array.length) {
+            return 0;
+        }
+
+        // Recursive call to calculate sum from the next index
+        int partialSum = calculateSum(array, currentIndex + 1);
+
+        // Add the element at the current index to the partial sum
+        return partialSum + array[currentIndex];
+    }
+
+    public static void main(String[] args) {
+        int[] numbers = {1, 2, 3, 4, 5};
+        int sum = calculateSum(numbers, 0);
+
+        System.out.println("Sum of the array elements: " + sum);
+    }
+}

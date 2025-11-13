@@ -1,0 +1,26 @@
+import java.util.*;
+public class q4 {
+	static int num=0;
+	static int let=0;
+	static int space=0;
+    static int count (int variable ) {
+		return num++;
+	}
+    static int count(char variable) {
+    	if (variable!=' ') {
+    		if (Character.isDigit(variable))
+    			return num++;
+    	 return let++;}
+    	else
+    	 return space++;
+    }
+public static void main(String []args) {
+	Scanner sc= new Scanner (System.in);
+	String s="Hello world123@";
+	for(int i =0;i<s.length();i++) {
+		
+		count(s.charAt(i));
+	}
+	System.out.println("Total Characters = "+let+"\nTotal digits = "+num+"\nTotal space = "+space);
+}
+}

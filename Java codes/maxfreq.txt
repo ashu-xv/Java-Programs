@@ -1,0 +1,44 @@
+import java.util.Arrays;
+import java.util.List;
+
+public class MaxFrequencyElementWithoutHashMap {
+
+    public static int findMaxFrequencyElement(List<Integer> numbers) {
+        if (numbers.isEmpty()) {
+            throw new IllegalArgumentException("List is empty");
+        }
+
+        // Sort the list
+        Integer[] array = numbers.toArray(new Integer[0]);
+        Arrays.sort(array);
+
+        int currentElement = array[0];
+        int maxFrequencyElement = currentElement;
+        int currentFrequency = 1;
+        int maxFrequency = 1;
+
+        for (int i = 1; i < array.length; i++) {
+            if (array[i] == currentElement) {
+                currentFrequency++;
+            } else {
+                currentElement = array[i];
+                currentFrequency = 1;
+            }
+
+            if (currentFrequency > maxFrequency) {
+                maxFrequency = currentFrequency;
+                maxFrequencyElement = currentElement;
+            }
+        }
+
+        return maxFrequencyElement;
+    }
+
+    public static void main(String[] args) {
+        List<Integer> numberList = Arrays.asList(3, 1, 4, 2, 3, 5, 1, 4, 7, 8, 5, 1, 5);
+
+        int maxFrequencyElement = findMaxFrequencyElement(numberList);
+
+        System.out.println("Element with Maximum Frequency: " + maxFrequencyElement);
+    }
+}

@@ -1,0 +1,28 @@
+<html>
+<head>
+    
+    <title>A3Q1</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
+   
+</head>
+<body>
+    <div id="selected">
+        <p>Red</p>
+        <p>White</p>
+        <p>Green</p>
+        <p>Black</p>
+        <p>Blue</p>
+        <p>Orange</p>
+    </div>
+    
+    <button>click me</button>
+        <div class="para"></div>
+<script>
+    $("button").click(function(){
+          var count = $("#selected p").length;
+          $(".para").text("There are " + count  + " child element inside the div. ");
+      });
+</script>     
+      
+</body>
+</html>

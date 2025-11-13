@@ -1,0 +1,36 @@
+import java.util.Arrays;
+
+public class CheckArrayReverse {
+
+    public static boolean isReverse(int[] arr1, int[] arr2) {
+        // Check if arrays have the same length
+        if (arr1.length != arr2.length) {
+            return false;
+        }
+
+        int n = arr1.length;
+
+        // Compare elements from the beginning of arr1 with elements from the end of arr2
+        for (int i = 0; i < n; i++) {
+            if (arr1[i] != arr2[n - 1 - i]) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public static void main(String[] args) {
+        int[] arr1 = {1, 2, 3, 4, 5};
+        int[] arr2 = {5, 4, 3, 2, 1};
+
+        System.out.println("Array 1: " + Arrays.toString(arr1));
+        System.out.println("Array 2: " + Arrays.toString(arr2));
+
+        if (isReverse(arr1, arr2)) {
+            System.out.println("Array 2 is the reverse of Array 1.");
+        } else {
+            System.out.println("Array 2 is not the reverse of Array 1.");
+        }
+    }
+}

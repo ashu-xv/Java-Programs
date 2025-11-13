@@ -1,0 +1,23 @@
+public class RecursiveFactorial {
+
+    public static long factorial(int n) {
+        if (n < 0) {
+            throw new IllegalArgumentException("Factorial is not defined for negative numbers.");
+        }
+
+        // Base case: factorial of 0 is 1
+        if (n == 0) {
+            return 1;
+        }
+
+        // Recursive case
+        return n * factorial(n - 1);
+    }
+
+    public static void main(String[] args) {
+        int number = 5; // Replace with the desired number
+        long result = factorial(number);
+
+        System.out.println("Factorial of " + number + " is: " + result);
+    }
+}

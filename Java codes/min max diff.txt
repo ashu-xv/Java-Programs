@@ -1,0 +1,44 @@
+public class MinMaxDifference {
+
+    public static void findMinMaxDifferencePair(int[] array) {
+        if (array.length < 2) {
+            System.out.println("Array should have at least two elements.");
+            return;
+        }
+
+        int minDifference = Integer.MAX_VALUE;
+        int maxDifference = Integer.MIN_VALUE;
+        int minElement1 = 0, minElement2 = 0;
+        int maxElement1 = 0, maxElement2 = 0;
+
+        for (int i = 0; i < array.length - 1; i++) {
+            for (int j = i + 1; j < array.length; j++) {
+                int difference = Math.abs(array[i] - array[j]);
+
+                if (difference < minDifference) {
+                    minDifference = difference;
+                    minElement1 = array[i];
+                    minElement2 = array[j];
+                }
+
+                if (difference > maxDifference) {
+                    maxDifference = difference;
+                    maxElement1 = array[i];
+                    maxElement2 = array[j];
+                }
+            }
+        }
+
+        System.out.println("Pair with Minimum Difference: (" + minElement1 + ", " + minElement2 + ")");
+        System.out.println("Minimum Difference: " + minDifference);
+
+        System.out.println("Pair with Maximum Difference: (" + maxElement1 + ", " + maxElement2 + ")");
+        System.out.println("Maximum Difference: " + maxDifference);
+    }
+
+    public static void main(String[] args) {
+        int[] array = {3, 1, 4, 2, 9, 5, 7, 8};
+
+        findMinMaxDifferencePair(array);
+    }
+}

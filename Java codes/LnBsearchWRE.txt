@@ -1,0 +1,54 @@
+public class RecursiveSearch {
+
+    // Linear Search with Recursion
+    public static int linearSearchRecursive(int[] array, int target, int index) {
+        if (index >= array.length) {
+            return -1; // Base case: element not found
+        }
+
+        if (array[index] == target) {
+            return index; // Base case: element found
+        }
+
+        // Recursive case: search the rest of the array
+        return linearSearchRecursive(array, target, index + 1);
+    }
+
+    // Binary Search with Recursion
+    public static int binarySearchRecursive(int[] array, int target, int left, int right) {
+        if (left <= right) {
+            int mid = left + (right - left) / 2;
+
+            if (array[mid] == target) {
+                return mid; // Base case: element found
+            } else if (array[mid] < target) {
+                return binarySearchRecursive(array, target, mid + 1, right); // Search right half
+            } else {
+                return binarySearchRecursive(array, target, left, mid - 1); // Search left half
+            }
+        }
+
+        return -1; // Base case: element not found
+    }
+
+    public static void main(String[] args) {
+        int[] array = {2, 5, 8, 12, 16, 23, 38, 42, 55};
+        int target = 12;
+
+        // Linear Search with Recursion
+        int linearResult = linearSearchRecursive(array, target, 0);
+        if (linearResult != -1) {
+            System.out.println("Linear Search with Recursion: Element " + target + " found at index " + linearResult);
+        } else {
+            System.out.println("Linear Search with Recursion: Element " + target + " not found in the array");
+        }
+
+        // Binary Search with Recursion
+        int binaryResult = binarySearchRecursive(array, target, 0, array.length - 1);
+        if (binaryResult != -1) {
+            System.out.println("Binary Search with Recursion: Element " + target + " found at index " + binaryResult);
+        } else {
+            System.out.println("Binary Search with Recursion: Element " + target + " not found in the array");
+        }
+    }
+}

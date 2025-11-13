@@ -1,0 +1,113 @@
+import java.util.Scanner;
+public class QueueUsingArray {
+int arr[];
+int front,rear;
+//Initialize the size, front and rear using constructor
+QueueUsingArray(int max)
+{
+arr=new int[max];
+front=rear=-1;
+}
+//Inserting an element 
+void enqueue()
+{
+if(is_full())
+System.out.println("Queue Overflow");
+else
+{
+Scanner sc=new Scanner (System.in);
+System.out.println("Enter the element:");
+int e=sc.nextInt();
+if(front==-1&&rear==-1)
+front=rear=0;
+else
+rear=rear+1;
+arr[rear]=e;
+}
+}
+//Removing an element 
+int dequeue()
+{
+if(is_empty())
+{
+System.out.println("Queue Underflow");
+return -1;
+}
+else
+{
+int temp=arr[front];
+if(front==rear)
+front=rear=-1;
+else
+front=front+1;
+return temp;
+}
+}
+//Displaying the queue elements
+void display()
+{
+if(is_empty())
+{
+System.out.println("Queue Underflow");
+return ;
+}
+else
+{
+System.out.println("Queue Elements are:");
+for(int i=front;i<=rear;i++)
+System.out.print(arr[i]+" ");
+System.out.println();
+}
+}
+//Checking the queue is empty
+boolean is_empty()
+{
+if(front==-1&&rear==-1)
+return true;
+else
+return false;
+}
+//Checking the queue is full
+boolean is_full()
+{
+if(rear==arr.length-1)
+return true;
+else
+return false;
+}
+public static void main(String[] args) {
+Scanner sc=new Scanner (System.in);
+System.out.println("Enter the Queue size");
+int max=sc.nextInt();
+QueueUsingArray s= new QueueUsingArray(max);
+while(true)
+{
+System.out.println("****MENU*****");
+System.out.println("0:Exit");
+System.out.println("1:Enqueue");
+System.out.println("2:Dequeue");
+System.out.println("3:Display");
+System.out.println("*************");
+System.out.println("Enter the choice");
+int choice=sc.nextInt();
+switch(choice)
+{
+case 0:
+System.exit(0);
+case 1:
+s.enqueue();
+break;
+case 2:
+int m=s.dequeue();
+if(m!=-1)
+System.out.println("The deleted element is: "+m );
+break;
+case 3:
+s.display();
+break;
+default:
+System.out.println("Wrong choice");
+}
+}
+}
+}
